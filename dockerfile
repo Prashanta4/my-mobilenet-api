@@ -11,7 +11,7 @@ COPY ./GB_stu_mob.pth GB_stu_mob.pth
 COPY ./model.py model.py
 COPY ./app.py app.py
 
-# Expose Render's default port
+# Expose port
 EXPOSE 10000
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "10000"]
