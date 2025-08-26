@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torchvision import transforms
-from model import ModifiedMobileNetV2
+from .model import ModifiedMobileNetV2
 import numpy as np
 from PIL import Image
 from fastapi import FastAPI, File, UploadFile, HTTPException
@@ -24,7 +24,7 @@ logger.info(f"Using device: {device}")
 # Load model
 try:
     model = ModifiedMobileNetV2(num_classes=len(class_names)).to(device)
-    model.load_state_dict(torch.load('GB_stu_mob.pth', map_location=device))
+    model.load_state_dict(torch.load('app/GB_stu_mob.pth', map_location=device))
     model.eval()
     logger.info("Model loaded successfully")
 except Exception as e:

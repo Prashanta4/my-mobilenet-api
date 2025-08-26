@@ -7,11 +7,12 @@ COPY ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Copy application files
-COPY ./GB_stu_mob.pth GB_stu_mob.pth
-COPY ./model.py model.py
-COPY ./app.py app.py
+COPY ./app/GB_stu_mob.pth app/GB_stu_mob.pth
+COPY ./app/model.py app/model.py
+COPY ./app/main.py app/main.py
+COPY ./app/__init__.py app/__init__.py
 
 # Expose port
-EXPOSE 10000
+EXPOSE 80
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
